@@ -14,10 +14,15 @@ angular
 		SwatchFactoryFunction
 	])
 	.controller("IndexController", [
+		"$state",
 		"SwatchFactory",
 		indexControllerFunction
 	])
-
+	.controller("ShowController", [
+		"$stateParams",
+		"SwatchFactory",
+		showControllerFunction
+	])
 
 	function RouterFunction($stateProvider) {
 		$stateProvider
@@ -29,7 +34,13 @@ angular
 			url: "/swatches",
 			templateUrl: "/assets/js/ng-views/index.html",
 			controller: "IndexController",
-			contollerAs: "vm"
+			controllerAs: "vm"
+		})
+		.state("show", {
+			url: "/swatches/:name",
+			templateUrl: "/assets/js/ng-views/show.html",
+			controller: "ShowController",
+			controllerAs: "vm"
 		})
 	}
 
@@ -39,7 +50,23 @@ function SwatchFactoryFunction ($resource) {
 	});
 }
 
-function indexControllerFunction (SwatchFactory) {
-	// this.swatches = SwatchFactory.query()
+function indexControllerFunction ($state, SwatchFactory) {
+	this.swatches = SwatchFactory.query()
+	this.message = "helloguys"
 	console.log("inside the index controller function")
+	console.log(this)
+	console.log(this.swatches)
+	this.newSwatch = new SwatchFactory()
+	this.create = function() {
+		console.log('new swatch')
+		this.newSwatch.$save().then(function(swatch){
+			$state.go("show", {name: swatch.name})
+		})
+	}
+}
+
+function showControllerFunction ($stateParams, SwatchFactory) {
+	this.swatch = SwatchFactory.get({name: $stateParams.name})
+	console.log("inside the show controller function")
+	console.log(this.swatch)
 }

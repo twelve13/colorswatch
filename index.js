@@ -23,11 +23,20 @@ app.get("/", (req, res) => {
 app.get("/swatches", (req, res) => {
 	models.Swatch.find({}).then(function(swatches) {
 		res.json(swatches)
-		console.log("swatches are" + swatches)
 	});
 });
 
+app.get("/swatches/:name", (req, res) => {
+	models.Swatch.findOne(req.params).then(function(swatch) {
+		res.json(swatch);
+	});
+});
 
+app.post("/swatches", (req, res) => {
+	Swatch.create(req.body).then(function(swatch) {
+		res.json(swatch);
+	})
+})
 
 app.listen(4000, () => {
 	console.log("listening on 4000")

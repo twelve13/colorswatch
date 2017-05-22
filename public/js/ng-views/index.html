@@ -1,1 +1,12 @@
-<h1>testing colorswatches</h1>
+<h1>All the Colorswatches</h1>
+<div ng-repeat="swatch in vm.swatches">
+<p>x: {{swatch.name}}</p>
+</div>
+message: {{vm.message}}
+<form ng-submit="vm.create()">
+<input type="text" ng-model="vm.newSwatch.name" placeholder="Swatch Name">
+<input type="text" ng-model="vm.newSwatch.color1" placeholder="Color #1">
+<input type="text" ng-model="vm.newSwatch.color2" placeholder="Color #2">
+<input type="text" ng-model="vm.newSwatch.color3">
+
+</form>
