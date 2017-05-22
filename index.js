@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/assets", express.static("public"));
 
 app.get("/", (req, res) => {
-	res.send("Welcome to Colorswatch")
+	res.render("swatches")
 });
 
 app.get("/swatches", (req, res) => {

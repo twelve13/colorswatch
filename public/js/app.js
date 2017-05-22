@@ -1,3 +1,5 @@
+console.log('is this loading')
+
 angular
 	.module("colorswatch", [
 		"ui.router",
@@ -6,6 +8,14 @@ angular
 	.config([
 		"$stateProvider",
 		RouterFunction
+	])
+	.factory("SwatchFactory", [
+		"$resource",
+		SwatchFactoryFunction
+	])
+	.controller("IndexController", [
+		"SwatchFactory",
+		indexControllerFunction
 	])
 
 
@@ -17,6 +27,19 @@ angular
 		})
 		.state("index", {
 			url: "/swatches",
-			templateUrl: "/assets/js/ng-views/index.html"
+			templateUrl: "/assets/js/ng-views/index.html",
+			controller: "IndexController",
+			contollerAs: "vm"
 		})
 	}
+
+function SwatchFactoryFunction ($resource) {
+	return $resource("/swatches/:name", {}, {
+		update: {method: "PUT"}
+	});
+}
+
+function indexControllerFunction (SwatchFactory) {
+	// this.swatches = SwatchFactory.query()
+	console.log("inside the index controller function")
+}
