@@ -1,0 +1,20 @@
+[
+	{
+		"name": "Spooky",
+		"color1": "black",
+		"color2": "gray",
+		"color3": "red"
+	},
+	{
+		"name": "Fabulous",
+		"color1": "magenta",
+		"color2": "plum",
+		"color3": "silver"
+	},
+	{
+		"name": "Formal",
+		"color1": "olive",
+		"color2": "snow",
+		"color3": "tan"
+	}
+]
