@@ -12,8 +12,8 @@ app.set("view engine", "hbs");
 //   layoutsDir:     "views/",
 //   defaultLayout:  "layout-main"
 // }));
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true })); 
+// app.use(bodyParser.json()); 
+app.use(bodyParser.json({ extended: true })); 
 app.use("/assets", express.static("public"));
 
 app.get("/", (req, res) => {
@@ -33,7 +33,7 @@ app.get("/swatches/:name", (req, res) => {
 });
 
 app.post("/swatches", (req, res) => {
-	Swatch.create(req.body).then(function(swatch) {
+	models.Swatch.create(req.body).then(function(swatch) {
 		res.json(swatch);
 	})
 })

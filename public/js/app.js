@@ -52,9 +52,7 @@ function SwatchFactoryFunction ($resource) {
 
 function indexControllerFunction ($state, SwatchFactory) {
 	this.swatches = SwatchFactory.query()
-	this.message = "helloguys"
 	console.log("inside the index controller function")
-	console.log(this)
 	console.log(this.swatches)
 	this.newSwatch = new SwatchFactory()
 	this.create = function() {
@@ -67,6 +65,7 @@ function indexControllerFunction ($state, SwatchFactory) {
 
 function showControllerFunction ($stateParams, SwatchFactory) {
 	this.swatch = SwatchFactory.get({name: $stateParams.name})
+	this.message = "show test"
 	console.log("inside the show controller function")
 	console.log(this.swatch)
 }
