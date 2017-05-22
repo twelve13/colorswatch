@@ -44,6 +44,12 @@ app.put("/swatches/:name", (req, res) => {
 	})
 })
 
+app.delete("/swatches/:name", (req, res) => {
+	models.Swatch.findOneAndRemove({name: req.params.name}).then(function(){
+		res.json({success: true})
+	})
+})
+
 app.listen(4000, () => {
 	console.log("listening on 4000")
 });

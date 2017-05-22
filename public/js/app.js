@@ -19,6 +19,7 @@ angular
 		indexControllerFunction
 	])
 	.controller("ShowController", [
+		"$state",
 		"$stateParams",
 		"SwatchFactory",
 		showControllerFunction
@@ -63,7 +64,7 @@ function indexControllerFunction ($state, SwatchFactory) {
 	}
 }
 
-function showControllerFunction ($stateParams, SwatchFactory) {
+function showControllerFunction ($state, $stateParams, SwatchFactory) {
 	this.swatch = SwatchFactory.get({name: $stateParams.name})
 	this.message = "show test"
 	console.log("inside the show controller function")
@@ -71,5 +72,10 @@ function showControllerFunction ($stateParams, SwatchFactory) {
 	this.update = function(){
 		this.swatch.$update({name: $stateParams.name})
 		console.log("updating!")
+	}
+	this.destroy = function(){
+		this.swatch.$delete({name: $stateParams.name}).then(function(){
+			$state.go("index")
+		})
 	}
 }
