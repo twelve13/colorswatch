@@ -14,3 +14,10 @@ models.Swatch.remove({}, function(err, data){
 	}
 
 })
+
+//this is the same
+// models.Swatch.remove({}).then(function(){
+// 	models.Swatch.collection.insert(seedData).then(function(){
+// 		process.exit();
+// 	})
+// })
