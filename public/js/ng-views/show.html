@@ -3,3 +3,12 @@
 {{vm.swatch.color2}}
 {{vm.swatch.color3}}
 
+
+<form ng-submit="vm.update()">
+	<input type="text" ng-model="vm.swatch.name" value="vm.swatch.name">
+	<input type="text" ng-model="vm.swatch.color1" value="vm.swatch.color1">
+	<input type="text" ng-model="vm.swatch.color2" value="vm.swatch.color2">
+	<input type="text" ng-model="vm.swatch.color3" value="vm.swatch.color3">
+	<button type="submit">Edit Swatch</button>
+</form>
+

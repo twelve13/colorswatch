@@ -68,4 +68,8 @@ function showControllerFunction ($stateParams, SwatchFactory) {
 	this.message = "show test"
 	console.log("inside the show controller function")
 	console.log(this.swatch)
+	this.update = function(){
+		this.swatch.$update({name: $stateParams.name})
+		console.log("updating!")
+	}
 }

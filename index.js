@@ -38,6 +38,12 @@ app.post("/swatches", (req, res) => {
 	})
 })
 
+app.put("/swatches/:name", (req, res) => {
+	models.Swatch.findOneAndUpdate({name: req.params.name}, req.body, {new: true}).then(function(swatch){
+		res.json(swatch);
+	})
+})
+
 app.listen(4000, () => {
 	console.log("listening on 4000")
 });
