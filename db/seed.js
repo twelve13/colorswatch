@@ -1,10 +1,16 @@
-const mongoose = require("./connection");
+const models = require("./connection.js");
 const seedData = require("./seeds");
 
-const Swatch = mongoose.model("Swatch");
 
-Swatch.remove({}).then(() => {
-	Swatch.collection.insert(seedData).then(() => {
-		process.exit();
-	});
-});
+
+models.Swatch.remove({}, function(err, data){
+	if(err) {
+		console.log("error" + err);
+	}else{
+		models.Swatch.collection.insert(seedData).then((data) => {
+			console.log("inserted" + data);
+			process.exit();
+		});
+	}
+
+})

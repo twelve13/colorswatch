@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const hbs     = require("express-handlebars");
-const mongoose= require("./db/connection");
+const hbs = require("express-handlebars");
+const models = require("./db/connection");
 
 app.set("view engine", "hbs");
 app.use(bodyParser.json()); 

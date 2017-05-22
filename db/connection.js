@@ -8,7 +8,12 @@ const SwatchSchema = new mongoose.Schema(
 		color3: String
 	});
 
-mongoose.model("Swatch", SwatchSchema);
+const Swatch = mongoose.model("Swatch", SwatchSchema);
 mongoose.connect("mongodb://localhost/colorswatch");
-
-mongoose.exports = mongoose;
+mongoose.connection.on("error", function(err){
+	console.log(err)
+});
+mongoose.connection.once("open", function() {
+	console.log("connected to db")
+});
+module.exports = {Swatch};
