@@ -2,10 +2,16 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const hbs = require("express-handlebars");
+const hbs = require("hbs");
 const models = require("./db/connection");
 
 app.set("view engine", "hbs");
+// app.engine(".hbs", hbs({
+//   extname:        ".hbs",
+//   partialsDir:    "views/",
+//   layoutsDir:     "views/",
+//   defaultLayout:  "layout-main"
+// }));
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use("/assets", express.static("public"));
@@ -14,7 +20,12 @@ app.get("/", (req, res) => {
 	res.send("Welcome to Colorswatch")
 });
 
-
+app.get("/swatches", (req, res) => {
+	models.Swatch.find({}).then(function(swatches) {
+		res.json(swatches)
+		console.log("swatches are" + swatches)
+	});
+});
 
 
 
