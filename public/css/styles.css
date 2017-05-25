@@ -1,0 +1,14 @@
+.swatch {
+	align-items: center;
+	border: solid black 2px;
+	display: flex;
+	font-size: 24px;
+	height: 100px;
+	justify-content: center;
+	margin: 10px;
+	width: 100px;
+}
+
+.swatch-container {
+	display: flex;
+}

@@ -1,7 +1,21 @@
+<style>
+	.swatch1 {
+		background-color: {{vm.swatch.color1}};
+	}
+	.swatch2 {
+		background-color: {{vm.swatch.color2}};
+	}
+	.swatch3 {
+		background-color: {{vm.swatch.color3}};
+	}
+</style>
+
 <h1>{{vm.swatch.name}}</h1>
-{{vm.swatch.color1}}
-{{vm.swatch.color2}}
-{{vm.swatch.color3}}
+<div class="swatch-container">
+<div class="swatch swatch1">{{vm.swatch.color1}}</div>
+<div class="swatch swatch2">{{vm.swatch.color2}}</div>
+<div class="swatch swatch3">{{vm.swatch.color3}}</div>
+</div>
 
 
 <form ng-submit="vm.update()">
